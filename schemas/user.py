@@ -1,12 +1,14 @@
+# Token / user schemas
 from pydantic import BaseModel, EmailStr
 from typing import Optional
+from datetime import datetime
 
 
 class TokenPayload(BaseModel):
-    """Internal model extracted from JWT claims."""
+    """Internal model extracted from JWT claims (mirrors JWT claims)."""
 
     sub: str  # subject (user id)
-    exp: int  # expiration timestamp (Unix seconds)
+    exp: datetime  # expiration as datetime per RFC 7519
 
 
 class TokenResponse(BaseModel):
